@@ -1,0 +1,63 @@
+import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.Map;
+
+//EXPERIMENTANDO COM ALGORITMOS MAIS EFICIENTES
+
+public class Problem_25 {
+	
+	public static BigInteger linearFib(int n) {
+	    if (n < 0) throw new IllegalArgumentException("N can not be negative");
+	    else if (n == 0) return BigInteger.ZERO;
+	    else if (n == 1) return BigInteger.ONE;
+	    BigInteger a = BigInteger.ZERO;
+	    BigInteger b = BigInteger.ONE;
+	    for (int i = 2; i <= n; i++) {
+	      BigInteger result = a.add(b);
+	      a = b;
+	      b = result;
+	    }
+	    return b;
+	  }
+	
+	 public static BigInteger logFib(int n, Map<Integer, BigInteger> data) {
+		    if (n < 0) throw new IllegalArgumentException("N can not be negative");
+		    else if (n == 0) return BigInteger.ZERO;
+		    else if (n == 1) return BigInteger.ONE;
+		    if (data == null) {
+		      data = new HashMap<>();
+		      data.put(0, BigInteger.ZERO);
+		      data.put(1, BigInteger.ONE);
+		    }
+		    if (n % 2 == 0) {
+		      int x = n / 2;
+		      BigInteger b = data.get(x) == null ? logFib(x, data) : data.get(x);
+		      data.put(x, b);
+		      BigInteger a = data.get(x-1) == null ? logFib(x-1, data) : data.get(x-1);
+		      data.put(x-1, a);
+		      BigInteger result = a.multiply(BigInteger.valueOf(2L)).add(b).multiply(b);
+		      data.put(n, result);
+		      return result;
+		    } else {
+		      int x = (n+1) / 2;
+		      BigInteger b = data.get(x) == null ? logFib(x, data) : data.get(x);
+		      data.put(x, b);
+		      BigInteger a = data.get(x-1) == null ? logFib(x-1, data) : data.get(x-1);
+		      data.put(x-1, a);
+		      BigInteger result = a.pow(2).add(b.pow(2));
+		      data.put(n, result);
+		      return result;
+		    }
+		  }
+		 
+	
+	
+	public static void main(String args[]){
+		for (int i = 0; ;i++){
+			if (linearFib(i).toString().length()==1000){
+				System.out.println(i);
+				break;
+			}
+		}
+	}
+}
