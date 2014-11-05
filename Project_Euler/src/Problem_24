@@ -1,0 +1,23 @@
+public class Problem_24 {
+	static int i =0;
+	static String x;
+
+	public static void permutation(String defaulti,String str ){
+		int n = str.length();
+        if (n == 0){ 
+            System.out.println(defaulti);
+        }else{
+            for (int i = 0; i < n; i++){
+                permutation(defaulti + str.charAt(i), str.substring(0, i) + str.substring(i+1));
+            }
+       }
+    }
+	
+	public static void main(String args[]){
+		//x = permutation("","0123456789");
+		i++;
+		if (i == 1000000){
+			
+		}
+	}
+}
