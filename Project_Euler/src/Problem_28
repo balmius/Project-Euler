@@ -1,0 +1,17 @@
+public class Problem_28 {
+	public static void main(String args[]){
+		//os aneis se N for numero impar sao sempre impares (ver figura)
+		//canto superior esquerdo: n^2 - (n-1)
+		//canto superior direito: n^2
+		//canto inferior esquerdo: n^2 - 3(n-1)
+		//canto inferior direito: n^2 - 2(n-1)
+		//tudo junto: 4n^2 - 6(n-1)
+		//n = 1 e um caso especial, visto que se trata do centro
+		
+		int soma = 1; 
+		for(int i = 3; i<=1001;i=i+2){ //IMPAR!
+			soma = soma + 4*i*i - 6*(i-1);
+		}
+		System.out.println(soma);
+	}
+}
