@@ -1,0 +1,23 @@
+public class Problem_30 {
+	public static int fifthPower(int n){
+		int  soma = 0;
+		int x;
+			while(n!=0){
+				x = n % 10;
+				soma = soma + x*x*x*x*x;
+				n = n / 10;
+			}
+			
+			return soma;
+	}
+	public static void main(String args[]){
+		int soma = 0;
+		int x = (9*9*9*9*9)*5; //numero max e 9^5 * 5
+		for(int i = 2 ; i<= x ;i++){
+			if(i==fifthPower(i)){
+				soma = soma + i;
+			}
+		}
+		System.out.println(soma);
+	}
+}
