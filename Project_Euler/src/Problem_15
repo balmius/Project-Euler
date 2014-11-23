@@ -1,0 +1,21 @@
+public class Problem_15 {
+	//http://mathworld.wolfram.com/LatticePath.html <- informaçao extra
+	
+	public static BigInteger factorial(int n){//versao factorial mas com bigintegers
+		BigInteger factorial = BigInteger.ONE;
+		for (int i = 1; i<=n;i++){
+			factorial = factorial.multiply(BigInteger.valueOf(i)); 
+		}
+		return factorial;
+	}
+	
+	public static void main(String args[]){
+		//formula do coeficiente binomial
+		//n! / ((n-k)!k!)
+		//para o lattice fica = (a+b)!/((a+b-a)!*a!)
+		//SEE LINK FOR INFORMATION
+		BigInteger numerador = factorial(40); //fact(a+b)
+		BigInteger denominador = factorial(20).multiply(factorial(20));//fact(a)*fact(a+b-a)
+		System.out.println(numerador.divide(denominador));
+	}
+}
