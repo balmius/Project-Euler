@@ -1,0 +1,29 @@
+import java.util.Arrays;
+
+
+public class Problem_52 {
+	public static void main(String args[]){
+		int count = 0;
+		for(int i = 10 ; ;i++){
+			count = 0;
+			for(int j = 2; j<6;j++){
+				if(check(i*j,i*(j+1))){
+					count++;
+				}
+			}
+			if(count == 4){
+				System.out.println(i);
+				break;
+			}}
+		}
+	
+
+	private static boolean check(int arg1,int arg2) {
+		char[] a = Integer.toString(arg1).toCharArray();
+		char[] b = Integer.toString(arg2).toCharArray();
+		Arrays.sort(a);
+		Arrays.sort(b);
+		
+		return Arrays.equals(a, b);
+	}
+}
