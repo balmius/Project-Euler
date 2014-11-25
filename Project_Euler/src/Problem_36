@@ -1,0 +1,53 @@
+public class Problem_36 { //with stacks
+	
+	static arraystack<Integer> lels = new arraystack<Integer>();
+	
+	public static boolean palindrome(int n){
+		String x = Integer.toString(n);
+		if(x.equals(new StringBuilder(x).reverse().toString())){
+			return true;
+		}
+		return false;
+	}
+	
+	public static boolean binario(int n) throws EmptyException{
+		String x2 = "";
+		if (n == 0){
+			System.out.println("[0]");
+		}
+		else if (n == 1){
+			System.out.println("[1]");
+		}
+		else{
+		
+		while (n!=0){ //0.5 como se trata de ints o x passa o para 0;
+			int x = n/2;
+			int y = n%2;
+		
+			lels.push(y);
+			n = x;
+			
+		}
+		//System.out.println(lels.toString()); <- rework on this
+		while (!lels.empty()) {
+            x2 += Integer.toString(lels.pop());
+			}
+		}
+		
+		if(x2.equals(new StringBuilder(x2).reverse().toString())){
+			return true;
+		}
+		
+		return false;
+		
+	}
+	public static void main(String args[]) throws EmptyException{
+		int sum = 0;
+		for(int i = 0;i<1000000;i++){
+			if(palindrome(i) && binario(i)){
+				sum = sum + i;
+			}
+		}
+		System.out.println(sum);
+	}
+}
