@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+
+
+public class Problem_45 {
+	public static long triangle(long n){
+		return n*(n+1)/2;
+	}
+	public static long pentagonal(long n){
+		return n*(3*n-1)/2;
+	}
+	public static long hexagonal(long n){
+		return n*(2*n-1);
+	}
+	
+	public static void main(String args[]){
+		long i = 286;
+		long j = 166;
+		long k = 144;
+		for(int l = 0 ; ; l++){
+			long temp = Math.min(Math.min(triangle(i), hexagonal(k)),pentagonal(j));
+			if(temp == triangle(i) && hexagonal(k)==temp && pentagonal(j) == temp){ 
+				System.out.println(temp);
+				break;}
+			if(temp == triangle(i)) i++;
+			if(temp == hexagonal(k)) k++;
+			if(temp == pentagonal(j)) j++;
+			
+		}
+		
+		}
+	}
