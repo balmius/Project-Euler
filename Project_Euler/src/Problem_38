@@ -1,0 +1,42 @@
+public class Problem_38 {
+	/*
+	 * a faster way of detecting primes: (not made by me)
+	 * instead of calculating all the primes and checking if a number is prime
+	 * we create an array of booleans which has true of prime and false for non prime
+	 */
+	public static boolean[] primeArray = booleanPrimeArray(1000000);
+	
+	public static boolean[] booleanPrimeArray(int n) {
+		boolean[] prime = new boolean[n+1];
+		if (n >= 2)
+			prime[2] = true;
+		for (int i = 3; i <= n; i += 2)
+			prime[i] = true;
+		for (int i = 3, end = (int) Math.sqrt(n); i <= end; i += 2) {
+			if (prime[i]) {
+				for (int j = i * i; j <= n; j += i << 1)
+					prime[j] = false;
+			} 
+		}
+		return prime;
+	}
+	
+	public static void main(String args[]){
+		int counter = 0;
+		for (int i = 0; i<=1000000;i++){
+			if (isCircularPrime(i)){
+				counter++;
+			}
+			
+		}
+		System.out.println(counter);
+	}
+	private static boolean isCircularPrime(int n) {
+		String s = Integer.toString(n);
+		for (int i = 0; i < s.length(); i++) {
+			if (!primeArray[Integer.parseInt(s.substring(i) + s.substring(0, i))])
+				return false;
+		}
+		return true;
+	}
+}
