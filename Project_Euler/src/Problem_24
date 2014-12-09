@@ -1,23 +1,32 @@
+import java.util.ArrayList;
+
+
+
+
 public class Problem_24 {
 	static int i =0;
 	static String x;
-
+	static ArrayList<String> array = new ArrayList<String>();
+	
 	public static void permutation(String defaulti,String str ){
 		int n = str.length();
         if (n == 0){ 
-            System.out.println(defaulti);
+        	array.add(defaulti);
+        	
         }else{
             for (int i = 0; i < n; i++){
                 permutation(defaulti + str.charAt(i), str.substring(0, i) + str.substring(i+1));
+                
             }
+           
        }
     }
 	
 	public static void main(String args[]){
-		//x = permutation("","0123456789");
-		i++;
-		if (i == 1000000){
-			
+		//x = permutation("","0123456789")
+		permutation("","0123456789");
+		int x = (int) Math.pow(10, 6);
+		System.out.println(array.get(x-1));
+
 		}
 	}
-}
